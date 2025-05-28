@@ -27,7 +27,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
 const loginSchema = z.object({
-  email: z.string().trim().email({ message: "E-mail inválido" }),
+  email: z
+    .string()
+    .trim()
+    .min(1, { message: "E-mail é obrigatório" })
+    .email({ message: "E-mail inválido" }),
   password: z
     .string()
     .trim()
